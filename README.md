@@ -39,3 +39,36 @@ iv. Uma vez que o servidor esteja na memória, ele não deve permitir que uma se
 v. Deverá haver uma forma para o próprio servidor se remover da memória;
 
 ## Protocolo
+### A aplicação cliente (agente)        
+Ao ser executado, o cliente deverá informar ao servidor que ele está on-line, informando o nome do HOST do cliente, seu IP e usuário logado (obter o usuário do computador):
+
+#### LOGIN – Registro do Agente no Servidor
+##### Requisição (Cliente - Servidor)
+'ON-LINE <NOMEHOST> <IPV4> <USUÁRIO>\n'
+##### Resposta (Servidor → Cliente)
+###### Se o agente for registrado com sucesso:
+'200 OK\n'
+###### Se houver erro no formato da mensagem:
+'400 BAD_REQUEST\n'
+###### Se o agente já estiver registrado:
+'409 ALREADY_LOGGED_IN\n'
+
+### A aplicação servidora
+Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes informações do hardware onde estão sendo executados (CPU, memória, disco, Sistema Operacional, ...).
+
+#### LISTAGENTS – Listar Agentes Conectados
+##### Requisição (Servidor - Cliente)
+'LISTAGENTS\n'
+##### Resposta (Cliente - Servidor)
+###### Se houver agentes conectados:
+'200 OK <MAQUINA1> <IPV4_1> <USUÁRIO1> <TEMPO1> <MAQUINA2> <IPV4_2> <USUÁRIO2> <TEMPO2> ...\n'
+###### Se não houver agentes online:
+'204 NO_CONTENT\n'
+
+
+
+
+
+
+
+
