@@ -53,18 +53,82 @@ Ao ser executado, o cliente deverá informar ao servidor que ele está on-line, 
 ###### Se o agente já estiver registrado:
 '409 ALREADY_LOGGED_IN\n'
 
-### A aplicação servidora
+### A aplicação servidora 
 Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes informações do hardware onde estão sendo executados (CPU, memória, disco, Sistema Operacional, ...).
 
-#### LISTAGENTS – Listar Agentes Conectados
+#### INFO-HARDWARE – Obter Informações do Hardware e Sistema Operacional
 ##### Requisição (Servidor - Cliente)
-'LISTAGENTS\n'
+'INFO-HARDWARE\n'
+##### Resposta (Cliente - Servidor)
+200 OK <CPU> <MEMÓRIA_TOTAL> <MEMÓRIA_LIVRE> <DISCO_TOTAL> <DISCO_LIVRE> <SISTEMA_OPERACIONAL>\n
+###### Se houver erro na obtenção dos dados:
+500 INTERNAL_ERROR\n
+
+Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes a lista de programas instalados no computador.
+
+#### LISTA-PROGRAMAS – Listar Programas Instalados
+##### Requisição (Servidor - Cliente)
+LISTA-PROGRAMAS\n
+##### Resposta (Cliente - Servidor)
+200 OK <APP1> <APP2> <APP3> ...\n
+###### Se não houver aplicativos instalados:
+204 NO_CONTENT\n
+###### Se houver erro na obtenção dos dados:
+500 INTERNAL_ERROR\n
+
+Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes o histórico de navegação.
+
+#### HISTORICO – Obter Histórico de Navegação
+##### Requisição (Servidor - Cliente)
+HISTORICO\n
+##### Resposta (Cliente - Servidor)
+200 OK <URL1> <DATA1> <URL2> <DATA2> ...\n
+###### Se não houver histórico disponível:
+204 NO_CONTENT\n
+###### Se houver erro na obtenção dos dados:
+500 INTERNAL_ERROR\n
+
+Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes informações detalhadas do usuário que está logado (podem incluir dados como o diretório inicial (home directory), identificador de usuário (UID), grupo principal, grupo(s) secundário(s), shell padrão, entre outros).
+
+#### USERINFO – Obter Informações do Usuário Logado
+##### Requisição (Servidor - Cliente)
+USERINFO\n
+##### Resposta (Cliente - Servidor)
+200 OK <USUÁRIO> <UID> <GRUPO> <GRUPOS_SECUNDÁRIOS> <HOME> <SHELL>\n
+######Se houver erro na obtenção dos dados:
+500 INTERNAL_ERROR\n
+
+Deverá ser implementado um comando na aplicação servidora que liste os agentes que estão on-line trazendo informações como: IP, nome do HOST, usuário logado e o tempo que está que o agente está on-line.
+
+#### LISTA-AGENTES – Listar Agentes Conectados
+##### Requisição (Servidor - Cliente)
+LISTA-AGENTES\n
 ##### Resposta (Cliente - Servidor)
 ###### Se houver agentes conectados:
-'200 OK <MAQUINA1> <IPV4_1> <USUÁRIO1> <TEMPO1> <MAQUINA2> <IPV4_2> <USUÁRIO2> <TEMPO2> ...\n'
+200 OK <NOMEHOST1> <IPV4_1> <USUÁRIO1> <TEMPO1> <NOMEHOST2> <IPV4_2> <USUÁRIO2> <TEMPO2> ...\n
 ###### Se não houver agentes online:
-'204 NO_CONTENT\n'
+204 NO_CONTENT\n
 
+
+### Tratamento de Erros
+O servidor sempre retorna um código de status que o cliente interpreta e exibe mensagens apropriadas ao usuário.
+
+Código					          Significado								            Ação do Cliente
+200 OK					          Operação bem-sucedida					        Prosseguir com a resposta
+204 NO_CONTENT			      Nenhum dado disponível					      Exibir "Nenhum dado encontrado."
+400 BAD_REQUEST			      Requisição malformada					        Exibir "Erro: Comando inválido."
+404 NOT_FOUND			        Dados não encontrados					        Exibir "Erro: Informação não encontrada."
+409 ALREADY_LOGGED_IN	    Agente já registrado					        Exibir "Erro: O agente já está conectado."
+500 INTERNAL_ERROR		    Erro interno no cliente ou servidor		Exibir "Erro: Falha ao processar a solicitação."
+
+## Licença
+Este projeto está licenciado sob a MIT License.
+## Contribuições
+Sinta-se à vontade para abrir Issues e enviar Pull Requests! 🚀
+
+##Contato
+* Email: ahls.n3t@gmail.com
+* GitHub: @ahlsouza
 
 
 
