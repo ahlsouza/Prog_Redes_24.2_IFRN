@@ -40,7 +40,7 @@ v. Deverá haver uma forma para o próprio servidor se remover da memória;
 
 ## Protocolo
 ### A aplicação cliente (agente)        
-Ao ser executado, o cliente deverá informar ao servidor que ele está on-line, informando o nome do HOST do cliente, seu IP e usuário logado (obter o usuário do computador):
+* Ao ser executado, o cliente deverá informar ao servidor que ele está on-line, informando o nome do HOST do cliente, seu IP e usuário logado (obter o usuário do computador):
 
 #### LOGIN – Registro do Agente no Servidor
 ##### Requisição (Cliente - Servidor)
@@ -54,7 +54,7 @@ Ao ser executado, o cliente deverá informar ao servidor que ele está on-line, 
 '409 ALREADY_LOGGED_IN\n'
 
 ### A aplicação servidora 
-Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes informações do hardware onde estão sendo executados (CPU, memória, disco, Sistema Operacional, ...).
+* Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes informações do hardware onde estão sendo executados (CPU, memória, disco, Sistema Operacional, ...).
 
 #### INFO-HARDWARE – Obter Informações do Hardware e Sistema Operacional
 ##### Requisição (Servidor - Cliente)
@@ -64,7 +64,7 @@ Deverá ser implementado um comando na aplicação servidora para solicitar aos 
 ###### Se houver erro na obtenção dos dados:
 500 INTERNAL_ERROR\n
 
-Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes a lista de programas instalados no computador.
+* Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes a lista de programas instalados no computador.
 
 #### LISTA-PROGRAMAS – Listar Programas Instalados
 ##### Requisição (Servidor - Cliente)
@@ -76,7 +76,7 @@ LISTA-PROGRAMAS\n
 ###### Se houver erro na obtenção dos dados:
 500 INTERNAL_ERROR\n
 
-Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes o histórico de navegação.
+* Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes o histórico de navegação.
 
 #### HISTORICO – Obter Histórico de Navegação
 ##### Requisição (Servidor - Cliente)
@@ -88,17 +88,17 @@ HISTORICO\n
 ###### Se houver erro na obtenção dos dados:
 500 INTERNAL_ERROR\n
 
-Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes informações detalhadas do usuário que está logado (podem incluir dados como o diretório inicial (home directory), identificador de usuário (UID), grupo principal, grupo(s) secundário(s), shell padrão, entre outros).
+* Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes informações detalhadas do usuário que está logado (podem incluir dados como o diretório inicial (home directory), identificador de usuário (UID), grupo principal, grupo(s) secundário(s), shell padrão, entre outros).
 
-#### USERINFO – Obter Informações do Usuário Logado
+#### INFO-USUARIO – Obter Informações do Usuário Logado
 ##### Requisição (Servidor - Cliente)
-USERINFO\n
+INFO-USUARIO\n
 ##### Resposta (Cliente - Servidor)
 200 OK <USUÁRIO> <UID> <GRUPO> <GRUPOS_SECUNDÁRIOS> <HOME> <SHELL>\n
 ######Se houver erro na obtenção dos dados:
 500 INTERNAL_ERROR\n
 
-Deverá ser implementado um comando na aplicação servidora que liste os agentes que estão on-line trazendo informações como: IP, nome do HOST, usuário logado e o tempo que está que o agente está on-line.
+* Deverá ser implementado um comando na aplicação servidora que liste os agentes que estão on-line trazendo informações como: IP, nome do HOST, usuário logado e o tempo que está que o agente está on-line.
 
 #### LISTA-AGENTES – Listar Agentes Conectados
 ##### Requisição (Servidor - Cliente)
@@ -111,8 +111,6 @@ LISTA-AGENTES\n
 
 
 ### Tratamento de Erros
-O servidor sempre retorna um código de status que o cliente interpreta e exibe mensagens apropriadas ao usuário.
-
 Código					          Significado								            Ação do Cliente
 200 OK					          Operação bem-sucedida					        Prosseguir com a resposta
 204 NO_CONTENT			      Nenhum dado disponível					      Exibir "Nenhum dado encontrado."
