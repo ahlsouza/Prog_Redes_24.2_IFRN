@@ -109,6 +109,11 @@ LISTA-AGENTES\n
 ###### Se não houver agentes online:
 204 NO_CONTENT\n
 
+* Servidor encerra conexão
+#### Requisição
+QUIT\n
+#### Resposta
+200 OK BYE\n
 
 ### Tratamento de Erros
 Código					          Significado								            Ação do Cliente
