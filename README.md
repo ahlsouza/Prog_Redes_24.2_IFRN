@@ -40,9 +40,9 @@ v. Deverá haver uma forma para o próprio servidor se remover da memória;
 
 ## Protocolo
 ### A aplicação cliente (agente)        
-* Ao ser executado, o cliente deverá informar ao servidor que ele está on-line, informando o nome do HOST do cliente, seu IP e usuário logado (obter o usuário do computador):
+--> Ao ser executado, o cliente deverá informar ao servidor que ele está on-line, informando o nome do HOST do cliente, seu IP e usuário logado (obter o usuário do computador):
 
-#### LOGIN – Registro do Agente no Servidor
+#### ON-LINE – Registro do Agente no Servidor
 ##### Requisição (Cliente - Servidor)
 'ON-LINE <NOMEHOST> <IPV4> <USUÁRIO>\n'
 ##### Resposta (Servidor → Cliente)
@@ -54,7 +54,7 @@ v. Deverá haver uma forma para o próprio servidor se remover da memória;
 '409 ALREADY_LOGGED_IN\n'
 
 ### A aplicação servidora 
-* Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes informações do hardware onde estão sendo executados (CPU, memória, disco, Sistema Operacional, ...).
+--> Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes informações do hardware onde estão sendo executados (CPU, memória, disco, Sistema Operacional, ...).
 
 #### INFO-HARDWARE – Obter Informações do Hardware e Sistema Operacional
 ##### Requisição (Servidor - Cliente)
@@ -64,7 +64,7 @@ v. Deverá haver uma forma para o próprio servidor se remover da memória;
 ###### Se houver erro na obtenção dos dados:
 500 INTERNAL_ERROR\n
 
-* Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes a lista de programas instalados no computador.
+--> Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes a lista de programas instalados no computador.
 
 #### LISTA-PROGRAMAS – Listar Programas Instalados
 ##### Requisição (Servidor - Cliente)
@@ -76,7 +76,7 @@ LISTA-PROGRAMAS\n
 ###### Se houver erro na obtenção dos dados:
 500 INTERNAL_ERROR\n
 
-* Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes o histórico de navegação.
+--> Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes o histórico de navegação.
 
 #### HISTORICO – Obter Histórico de Navegação
 ##### Requisição (Servidor - Cliente)
@@ -88,7 +88,7 @@ HISTORICO\n
 ###### Se houver erro na obtenção dos dados:
 500 INTERNAL_ERROR\n
 
-* Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes informações detalhadas do usuário que está logado (podem incluir dados como o diretório inicial (home directory), identificador de usuário (UID), grupo principal, grupo(s) secundário(s), shell padrão, entre outros).
+--> Deverá ser implementado um comando na aplicação servidora para solicitar aos agentes informações detalhadas do usuário que está logado (podem incluir dados como o diretório inicial (home directory), identificador de usuário (UID), grupo principal, grupo(s) secundário(s), shell padrão, entre outros).
 
 #### INFO-USUARIO – Obter Informações do Usuário Logado
 ##### Requisição (Servidor - Cliente)
@@ -98,7 +98,7 @@ INFO-USUARIO\n
 ######Se houver erro na obtenção dos dados:
 500 INTERNAL_ERROR\n
 
-* Deverá ser implementado um comando na aplicação servidora que liste os agentes que estão on-line trazendo informações como: IP, nome do HOST, usuário logado e o tempo que está que o agente está on-line.
+--> Deverá ser implementado um comando na aplicação servidora que liste os agentes que estão on-line trazendo informações como: IP, nome do HOST, usuário logado e o tempo que está que o agente está on-line.
 
 #### LISTA-AGENTES – Listar Agentes Conectados
 ##### Requisição (Servidor - Cliente)
@@ -109,7 +109,7 @@ LISTA-AGENTES\n
 ###### Se não houver agentes online:
 204 NO_CONTENT\n
 
-* Servidor encerra conexão
+--> Servidor encerra conexão
 #### Requisição
 QUIT\n
 #### Resposta
@@ -126,6 +126,7 @@ Código					          Significado								            Ação do Cliente
 
 ## Licença
 Este projeto está licenciado sob a MIT License.
+
 ## Contribuições
 Sinta-se à vontade para abrir Issues e enviar Pull Requests! 🚀
 
