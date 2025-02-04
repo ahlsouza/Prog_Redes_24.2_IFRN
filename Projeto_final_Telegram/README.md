@@ -116,13 +116,14 @@ QUIT\n
 200 OK BYE\n
 
 ### Tratamento de Erros
-Código					          Significado								            Ação do Cliente
-200 OK					          Operação bem-sucedida					        Prosseguir com a resposta
-204 NO_CONTENT			      Nenhum dado disponível					      Exibir "Nenhum dado encontrado."
-400 BAD_REQUEST			      Requisição malformada					        Exibir "Erro: Comando inválido."
-404 NOT_FOUND			        Dados não encontrados					        Exibir "Erro: Informação não encontrada."
-409 ALREADY_LOGGED_IN	    Agente já registrado					        Exibir "Erro: O agente já está conectado."
-500 INTERNAL_ERROR		    Erro interno no cliente ou servidor		Exibir "Erro: Falha ao processar a solicitação."
+| Código | Significado | Ação do Cliente |
+|--------|-------------|-----------------|
+|200 OK	 |Operação bem-sucedida|Prosseguir com a resposta|
+|204 NO_CONTENT|Nenhum dado disponível|Exibir "Nenhum dado encontrado."|
+|400 BAD_REQUEST|Requisição malformada|Exibir "Erro: Comando inválido."|
+|404 NOT_FOUND|Dados não encontrados|Exibir "Erro: Informação não encontrada."|
+|409 ALREADY_LOGGED_IN|Agente já registrado|Exibir "Erro: O agente já está conectado."|
+|500 INTERNAL_ERROR|Erro interno no cliente ou servidor|Exibir "Erro: Falha ao processar a solicitação."|
 
 ## Licença
 Este projeto está licenciado sob a MIT License.
